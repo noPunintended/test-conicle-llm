@@ -12,6 +12,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 load_dotenv()
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+genai.configure(api_key="AIzaSyCwgoEU_uLitrrUE9Rz2MV2vLiW27NGBsU")
 
 
 def create_vector_database(category=None):
