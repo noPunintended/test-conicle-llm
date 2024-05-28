@@ -10,12 +10,13 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import LanceDB
 from io import StringIO
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from google.oauth2 import service_account
 
 load_dotenv()
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 genai.configure(api_key="AIzaSyCwgoEU_uLitrrUE9Rz2MV2vLiW27NGBsU")
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = st.secrets["google_service_account"]
-
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["google_service_account"]
 
 def create_vector_database(category=None):
     embeddings = GoogleGenerativeAIEmbeddings(
@@ -56,7 +57,7 @@ def create_vector_database(category=None):
 
 
 def get_conversational_chain(prompt):
-    vertexai.init(project='conicle-ai')
+    vertexai.init(project='conicle-ai', credentials=credentials)
 
     model = GenerativeModel(model_name="gemini-1.5-flash",
                             system_instruction="You are an AI generative chatbot designed to act as a friendly and knowledgeable coach and mentor. Your primary goal is to provide helpful and accurate answers to users' questions while fostering a supportive and engaging conversation. You should encourage users to explore their thoughts and feelings, offering both practical advice and emotional support")
