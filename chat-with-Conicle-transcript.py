@@ -16,7 +16,7 @@ load_dotenv()
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 genai.configure(api_key="AIzaSyCwgoEU_uLitrrUE9Rz2MV2vLiW27NGBsU")
 credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["google_service_account"]
+    st.secrets["google_service_account"])
 
 def create_vector_database(category=None):
     embeddings = GoogleGenerativeAIEmbeddings(
