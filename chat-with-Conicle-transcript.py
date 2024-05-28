@@ -12,9 +12,6 @@ from io import StringIO
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from google.oauth2 import service_account
 
-load_dotenv()
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-genai.configure(api_key="AIzaSyCwgoEU_uLitrrUE9Rz2MV2vLiW27NGBsU")
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
