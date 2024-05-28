@@ -15,6 +15,7 @@ from google.oauth2 import service_account
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 def create_vector_database(category=None):
     embeddings = GoogleGenerativeAIEmbeddings(
