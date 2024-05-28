@@ -15,6 +15,7 @@ from google.oauth2 import service_account
 load_dotenv()
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 genai.configure(api_key="AIzaSyCwgoEU_uLitrrUE9Rz2MV2vLiW27NGBsU")
+print(st.secrets["google_service_account"])
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["google_service_account"])
 
